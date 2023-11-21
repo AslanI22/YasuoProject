@@ -9,10 +9,10 @@ var database = client.db("myYasuo");
 database.dropDatabase()
 database = client.db("myYasuo");
 const cats = database.collection("skins");
-const result = await cats.insertOne({name:"Nightbringer Yasuo"});
-console.log(`${result} documents were inserted`);
+const result = await cats.insertMany(data);
+console.log(`${result.insertedCount} documents were inserted`);
 } finally {
 await client.close();
 }
 }
-run();
+run()
