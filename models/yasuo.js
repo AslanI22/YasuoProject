@@ -1,6 +1,6 @@
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema
-var YasSchema = new Schema({
+var yasuoSchema = new Schema({
 title: String,
 nick: {
 type: String,
@@ -14,4 +14,4 @@ type:Date,
 default:Date.now
 }
 })
-module.exports.Yas = mongoose.model("Yasuo", YasSchema)
+module.exports.Yasuo = mongoose.model("Yasuo", yasuoSchema)

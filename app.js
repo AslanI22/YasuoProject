@@ -3,14 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/yasuos')
-
-var yasuos = require('./routes/yasuos');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://127.0.0.1:27017/myYasuo');
 
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var yasoesRouter = require('./routes/yasoes.js')
 
 var app = express();
 
@@ -24,11 +23,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/yasuos', yasuos);
-
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/yasoes', yasoesRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,7 +41,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', {title:'Error'});
 });
 
 module.exports = app;
