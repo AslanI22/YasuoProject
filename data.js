@@ -1,6 +1,6 @@
 var data = [{
-    title: 'Nidhtbtinger',
-    nick: 'Nightbringer',
+    title: 'Nightbringer',
+    nick: 'nightbringer',
     avatar: '/images/Nightbringer.jpg',
     desc: 'Ясуо, рожденный из гноящихся отголосков на заре творения, является адским воплощением хаоса в космосе. Обреченный навсегда сразиться с Несущим Рассвет, он ждет дня, когда его тьма наконец рассечет ее свет.'
     },
