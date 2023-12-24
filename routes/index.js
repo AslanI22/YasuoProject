@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+var checkAuth = require("./../middleware/checkAuth.js")
 const Yasuo = require('../models/yasuo.js').Yasuo;
 var User = require("../models/User").User
 

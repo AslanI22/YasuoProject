@@ -2,12 +2,12 @@ var express = require('express');
 var router = express.Router();
 var Yasuo = require('../models/yasuo.js').Yasuo;
 var async = require("async")
+var checkAuth = require("./../middleware/checkAuth.js")
 
-router.get('/:nick', async function(req, res, next) {
-    try {
+router.get('/:nick',checkAuth, async function(req, res, next) {
+  try {
       const [yasuo, yasuos] = await Promise.all([
-        Yasuo.findOne({ nick: req.params.nick }),
-        Yasuo.find({}, { _id: 0, title: 1, nick: 1 })
+        Yasuo.findOne({ nick: req.params.nick })
       ]);
     
       if (!yasuo) {
@@ -21,8 +21,6 @@ router.get('/:nick', async function(req, res, next) {
   });
   
   function renderYasuo(res, title, picture, desc, yasuos) {
-    console.log(yasuos);
-  
     res.render('yasuo', {
       title: title,
       picture: picture,
